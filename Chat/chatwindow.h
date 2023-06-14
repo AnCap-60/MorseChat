@@ -6,6 +6,8 @@
 #include <map>
 #include <QTime>
 
+#include "../Server/headers/ServerAPI.h"
+
 namespace Ui {
 class ChatWindow;
 }
