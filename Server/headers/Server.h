@@ -2,6 +2,7 @@
 
 #include <QTcpServer>
 #include <QTcpSocket>
+#include <QTime>
 
 class Server : public QTcpServer
 {
@@ -14,6 +15,8 @@ public:
 private:	
 	QVector<QTcpSocket*> sockets;
 	QByteArray data;
+
+	quint16 nextBlockSize = 0;
 
 	void SendToClient(QString str);
 

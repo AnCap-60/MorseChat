@@ -18,6 +18,9 @@ ServerAPI* ServerAPI::GetInstance()
 
 void ServerAPI::SendToServer(QString str)
 {
+	if (Instance->socket == nullptr)
+		qErrnoWarning("You need to connect to server firstly!");
+
 	Instance->data.clear();
 	QDataStream out(&Instance->data, QIODevice::WriteOnly);
 	out.setVersion(QDataStream::Qt_6_5);

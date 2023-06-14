@@ -1,6 +1,9 @@
 #include <QTcpSocket>
 #include <QTime>
 
+/// <summary>
+/// Singleton, use static functions
+/// </summary>
 class ServerAPI : QObject
 {
 	Q_OBJECT
@@ -8,7 +11,11 @@ class ServerAPI : QObject
 public:
 	static void ConnectToServer(QString IPv4);
 
+	void SendToServer(QString str);
+
 private:
+	ServerAPI() {}
+
 	static ServerAPI* GetInstance();
 
 #define Instance GetInstance()
@@ -17,10 +24,7 @@ private:
 
 	QTcpSocket* socket;
 	QByteArray data;
-
-	void SendToServer(QString str);
-
-	quint16 nextBlockSize;
+	quint16 nextBlockSize = 0;
 
 public slots:
 	static void SlotReadyRead();

@@ -30,7 +30,27 @@ void Server::SlotReadyRead()
 		
 		while (true)
 		{
-			
+			if (nextBlockSize == 0)
+			{
+				if (socket->bytesAvailable() < 2)
+					break;
+
+				in >> nextBlockSize;
+			}
+			if (socket->bytesAvailable() < nextBlockSize)
+				break;
+
+			QTime time;
+			in >> time;
+
+			QString message;
+			in >> message;
+
+			nextBlockSize = 0;
+
+			SendToClient(message);
+
+			break;
 		}
 	}
 	else
@@ -40,7 +60,7 @@ void Server::SlotReadyRead()
 void Server::SendToClient(QString str)
 {
 	data.clear();
-	QDataStream out(&data, QDataStream::WriteOnly);
+	QDataStream out(&data, QIODevice::WriteOnly);
 	out.setVersion(QDataStream::Qt_6_5);
 
 	out << str;
