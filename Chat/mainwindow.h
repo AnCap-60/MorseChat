@@ -2,9 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
 #include "chatwindow.h"
-#include "../Server/headers/ServerAPI.h"
+#include "creators.h"
 
 namespace Ui {
 class MainWindow;
@@ -21,9 +20,12 @@ public:
 private slots:
     void on_enterButton_clicked();
 
+    void on_creatorsButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     ChatWindow *chatwindow;
+    creators creatorswidget;
 };
 
 #endif // MAINWINDOW_H

@@ -6,6 +6,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    chatwindow = new ChatWindow();
+    connect (chatwindow, &ChatWindow::mainWindow, this, &MainWindow::show);
 }
 
 MainWindow::~MainWindow()
@@ -15,9 +18,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_enterButton_clicked()
 {
-    hide();
-    chatwindow = new ChatWindow(this);
     chatwindow->show();
+    this->close();
+}
 
-    ServerAPI::ConnectToServer("192.168.1.107");
+void MainWindow::on_creatorsButton_clicked()
+{
+    creatorswidget.show();
 }

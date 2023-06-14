@@ -6,44 +6,47 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>500</width>
-    <height>630</height>
+    <width>879</width>
+    <height>586</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>500</width>
-    <height>630</height>
+    <width>879</width>
+    <height>586</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>500</width>
-    <height>630</height>
+    <width>879</width>
+    <height>586</height>
    </size>
   </property>
   <property name="windowTitle">
    <string>Чат</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">background-color:rgb(170, 3, 250);</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QTextBrowser" name="textBrowser">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>40</y>
-      <width>461</width>
-      <height>421</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>470</y>
+      <y>450</y>
       <width>361</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(220,220,220)
+</string>
     </property>
     <property name="inputMethodHints">
      <set>Qt::ImhNone</set>
@@ -68,35 +71,30 @@
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>470</y>
+      <y>450</y>
       <width>91</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255, 180, 80); color:white</string>
+    </property>
     <property name="text">
      <string>Отправить</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="translateToMorzeButton">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>10</y>
-      <width>131</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Перевести на Морзе</string>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>510</y>
+      <y>490</y>
       <width>361</width>
-      <height>41</height>
+      <height>43</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout">
@@ -107,6 +105,14 @@
          <width>16777215</width>
          <height>60</height>
         </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 180, 80); color:white</string>
        </property>
        <property name="text">
         <string>-</string>
@@ -121,6 +127,14 @@
          <height>50</height>
         </size>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 180, 80); color:white</string>
+       </property>
        <property name="text">
         <string>.</string>
        </property>
@@ -133,6 +147,14 @@
          <width>16777215</width>
          <height>60</height>
         </size>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 180, 80); color:white</string>
        </property>
        <property name="text">
         <string>Пробел</string>
@@ -147,6 +169,9 @@
          <height>50</height>
         </size>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 180, 80); color:white</string>
+       </property>
        <property name="text">
         <string>/</string>
        </property>
@@ -154,50 +179,11 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="clearButton">
-    <property name="geometry">
-     <rect>
-      <x>390</x>
-      <y>560</y>
-      <width>91</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Удалить все</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="translateToRussianButton">
-    <property name="geometry">
-     <rect>
-      <x>350</x>
-      <y>10</y>
-      <width>131</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Перевести на русский</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="testButton">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>10</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>PushButton</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="deleteButton">
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>510</y>
+      <y>490</y>
       <width>91</width>
       <height>39</height>
      </rect>
@@ -208,8 +194,209 @@
       <height>50</height>
      </size>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255, 180, 80); color:white</string>
+    </property>
     <property name="text">
      <string>Удалить</string>
+    </property>
+   </widget>
+   <widget class="QTextEdit" name="textEdit">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>461</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">selection-background-color: rgb(220,220,220); selection-color: black; background-color:rgb(220,220,220)
+</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+    <property name="html">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Times New Roman'; font-size:20pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Eras Medium ITC'; font-size:16pt;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="translateButton">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>250</y>
+      <width>81</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255, 180, 80); color:white</string>
+    </property>
+    <property name="text">
+     <string>Перевести</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="enterComboBox">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>209</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(220,220,220); selection-background-color:rgb(220,220,220)</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Морзе</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Русский</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="flipButton">
+    <property name="geometry">
+     <rect>
+      <x>660</x>
+      <y>220</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255, 180, 80); color:white</string>
+    </property>
+    <property name="text">
+     <string>&lt;-&gt;</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="resultComboBox">
+    <property name="geometry">
+     <rect>
+      <x>710</x>
+      <y>209</y>
+      <width>151</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(220,220,220); selection-background-color:rgb(220,220,220)</string>
+    </property>
+    <item>
+     <property name="text">
+      <string>Русский</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Морзе</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QLineEdit" name="enterTranslateTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>500</x>
+      <y>280</y>
+      <width>172</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(220,220,220)
+</string>
+    </property>
+    <property name="readOnly">
+     <bool>false</bool>
+    </property>
+    <property name="placeholderText">
+     <string>Введите...</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="resultTranslateTextEdit">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>280</y>
+      <width>171</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Times New Roman</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(220,220,220)
+</string>
+    </property>
+    <property name="readOnly">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>760</x>
+      <y>500</y>
+      <width>101</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>13</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgb(255, 180, 80); color:white</string>
+    </property>
+    <property name="text">
+     <string>В меню</string>
     </property>
    </widget>
   </widget>
@@ -218,7 +405,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>500</width>
+     <width>879</width>
      <height>21</height>
     </rect>
    </property>
