@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QKeyEvent>
 #include <map>
+#include <QTime>
 
 namespace Ui {
 class ChatWindow;
@@ -23,14 +24,12 @@ private slots:
     void addingSpacer();
 
     void on_translateToMorzeButton_clicked();
-
     void on_clearButton_clicked();
-
     void on_translateToRussianButton_clicked();
-
     void on_testButton_clicked();
-
     void on_sendButton_clicked();
+
+    void newMessage(QTime time, QString message);
 
 private:
     Ui::ChatWindow *ui;
