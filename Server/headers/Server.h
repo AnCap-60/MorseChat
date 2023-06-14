@@ -3,6 +3,7 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 #include <QTime>
+#include <map>
 
 class Server : public QTcpServer
 {
@@ -13,15 +14,19 @@ public:
 	QTcpSocket* socket;
 
 private:	
+	std::map<QTime, QString> history;	
+
 	QVector<QTcpSocket*> sockets;
 	QByteArray data;
 
 	quint16 nextBlockSize = 0;
 
-	void SendToClient(QTime time, QString message);
+	void SendToClients(QTime time, QString message);
+	void SendToClient(QTcpSocket* soc, QTime time, QString message);
 
 public slots:
 	void SlotReadyRead();
 	void incomingConnection(qintptr socketDescriptor);
+	void ConnectionLost();
 };
 

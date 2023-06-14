@@ -14,9 +14,24 @@ void Server::incomingConnection(qintptr socketDescriptor)
 	socket->setSocketDescriptor(socketDescriptor);
 	connect(socket, &QTcpSocket::readyRead, this, &Server::SlotReadyRead);
 	connect(socket, &QTcpSocket::disconnected, socket, &QTcpServer::deleteLater);
+	connect(socket, &QTcpSocket::disconnected, socket, &QTcpSocket::abort);
+	connect(socket, &QTcpSocket::disconnected, this, &Server::ConnectionLost);
 
 	sockets.push_back(socket);
 	qDebug() << "client " << socketDescriptor << " connected\n";
+
+	for (auto note : history)
+		SendToClient(socket, note.first, note.second);
+}
+
+void Server::ConnectionLost()
+{
+	for (auto soc : sockets)
+		if (!socket->isValid())
+		{
+			sockets.removeOne(soc);
+			qDebug() << "socket " << soc->socketDescriptor() << " deleted";
+		}
 }
 
 void Server::SlotReadyRead()
@@ -48,7 +63,7 @@ void Server::SlotReadyRead()
 
 			nextBlockSize = 0;
 
-			SendToClient(time, message);
+			SendToClients(time, message);
 
 			break;
 		}
@@ -57,7 +72,15 @@ void Server::SlotReadyRead()
 		qDebug() << "QDataStream error";
 }
 
-void Server::SendToClient(QTime time, QString message)
+void Server::SendToClients(QTime time, QString message)
+{
+	history.emplace(time, message);
+
+	for (QTcpSocket* soc : sockets)
+		SendToClient(soc, time, message);
+}
+
+void Server::SendToClient(QTcpSocket* soc, QTime time, QString message)
 {
 	data.clear();
 	QDataStream out(&data, QIODevice::WriteOnly);
@@ -67,6 +90,5 @@ void Server::SendToClient(QTime time, QString message)
 	out.device()->seek(0);
 	out << quint16(data.size() - sizeof(quint16));
 
-	for (QTcpSocket* soc : sockets)
-		soc->write(data);
+	soc->write(data);
 }
