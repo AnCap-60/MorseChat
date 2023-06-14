@@ -5,6 +5,7 @@
 #include <QKeyEvent>
 #include <map>
 #include <QTime>
+#include <cstring>
 
 #include "../Server/headers/ServerAPI.h"
 
@@ -24,6 +25,7 @@ private slots:
     void addingSymbols();
     void deleteSymbols();
     void addingSpacer();
+
     void newMessage(QTime time, QString message);
 
     void on_sendButton_clicked();

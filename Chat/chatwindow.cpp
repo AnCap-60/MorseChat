@@ -21,6 +21,8 @@ ChatWindow::ChatWindow(QWidget *parent) : //конструктор окна
     connect (ui->deleteButton, SIGNAL(clicked()), this, SLOT(deleteSymbols()));
 
     connect (ui->deleteButton, SIGNAL(clicked), this, SLOT(newMessage()));
+
+    connect(ServerAPI::GetInstance(), &ServerAPI::NewMessage, this, &ChatWindow::newMessage);
 }
 
 ChatWindow::~ChatWindow() //деструктор окна
@@ -39,7 +41,8 @@ void ChatWindow::on_sendButton_clicked()
     if (flag == false)
     {
         leadToMorze(message);
-        ui->textEdit->append(message);
+        //ui->textEdit->append(message);
+        ServerAPI::GetInstance()->SendToServer(ui->lineEdit->text());
     }
     else
     {
@@ -47,6 +50,8 @@ void ChatWindow::on_sendButton_clicked()
     }
 
     ui->lineEdit->clear();
+
+
 }
 
 void ChatWindow::newMessage(QTime Time, QString message)
@@ -344,12 +349,14 @@ bool ChatWindow::validateRussian(QString message) //проверка на соо
 
     for (int i = 0; i < message.size(); i++)
     {
-        if ((message[i] != "А") && (message[i] != "Б") && (message[i] != "В") && (message[i] != "Г") && (message[i] != "Д") && (message[i] != "Е")
-                && (message[i] != "Ж") && (message[i] != "З") && (message[i] != "И") && (message[i] != "Й") && (message[i] != "К") && (message[i] != "Л")
-                && (message[i] != "М") && (message[i] != "Н") && (message[i] != "О") && (message[i] != "П") && (message[i] != "Р") && (message[i] != "С")
-                && (message[i] != "Т") && (message[i] != "У") && (message[i] != "Ф") && (message[i] != "Х") && (message[i] != "Ц") && (message[i] != "Ч")
-                && (message[i] != "Ш") && (message[i] != "Щ") && (message[i] != "Ъ") && (message[i] != "Ы") && (message[i] != "Ь") && (message[i] != "Э")
-                && (message[i] != "Ю") && (message[i] != "Я") && (message[i] != ' '))
+        auto c = message.right(message.size() - i).left(1);
+        
+        if ((c != "А") && (c != "Б") && (c!= "В") && (c != "Г") && (c != "Д") && (c != "Е")
+                && (c != "Ж") && (c != "З") && (c != "И") && (c != "Й") && (c != "К") && (c != "Л")
+                && (c != "М") && (c != "Н") && (c != "О") && (c != "П") && (c != "Р") && (c != "С")
+                && (c != "Т") && (c != "У") && (c != "Ф") && (c != "Х") && (c != "Ц") && (c != "Ч")
+                && (c != "Ш") && (c != "Щ") && (c != "Ъ") && (c != "Ы") && (c != "Ь") && (c != "Э")
+                && (c != "Ю") && (c != "Я") && (c != " "))
         {
             flag = true;
             break;

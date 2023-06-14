@@ -8,7 +8,7 @@ Server::Server()
 		qDebug() << "Error in starting server\n";
 }
 
-void Server::IncommingConnection(qintptr socketDescriptor)
+void Server::incomingConnection(qintptr socketDescriptor)
 {
 	socket = new QTcpSocket;
 	socket->setSocketDescriptor(socketDescriptor);

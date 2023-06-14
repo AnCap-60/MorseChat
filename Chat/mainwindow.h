@@ -1,9 +1,12 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "../Server/headers/ServerAPI.h"
 #include <QMainWindow>
 #include "chatwindow.h"
 #include "creators.h"
+
+
 
 namespace Ui {
 class MainWindow;

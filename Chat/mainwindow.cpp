@@ -18,6 +18,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_enterButton_clicked()
 {
+    ServerAPI::ConnectToServer("192.168.1.107");
+
     chatwindow->show();
     this->close();
 }

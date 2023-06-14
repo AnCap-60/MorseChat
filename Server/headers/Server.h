@@ -22,6 +22,6 @@ private:
 
 public slots:
 	void SlotReadyRead();
-	void IncommingConnection(qintptr socketDescriptor);
+	void incomingConnection(qintptr socketDescriptor);
 };
 

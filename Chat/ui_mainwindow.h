@@ -12,10 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -27,9 +24,6 @@ public:
     QPushButton *enterButton;
     QPushButton *creatorsButton;
     QPushButton *roolsButton;
-    QMenuBar *menuBar;
-    QToolBar *mainToolBar;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -38,28 +32,30 @@ public:
         MainWindow->resize(500, 630);
         MainWindow->setMinimumSize(QSize(500, 630));
         MainWindow->setMaximumSize(QSize(500, 630));
+        MainWindow->setStyleSheet(QString::fromUtf8("background-color:rgb(170, 3, 250);"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName("centralWidget");
         enterButton = new QPushButton(centralWidget);
         enterButton->setObjectName("enterButton");
-        enterButton->setGeometry(QRect(130, 110, 241, 61));
+        enterButton->setGeometry(QRect(130, 130, 241, 81));
+        QFont font;
+        font.setPointSize(14);
+        enterButton->setFont(font);
+        enterButton->setStyleSheet(QString::fromUtf8("background-color:rgb(255,180,80);\n"
+"color:white;"));
         creatorsButton = new QPushButton(centralWidget);
         creatorsButton->setObjectName("creatorsButton");
-        creatorsButton->setGeometry(QRect(130, 290, 241, 61));
+        creatorsButton->setGeometry(QRect(130, 330, 241, 81));
+        creatorsButton->setFont(font);
+        creatorsButton->setStyleSheet(QString::fromUtf8("background-color:rgb(255,180,80);\n"
+"color:white;"));
         roolsButton = new QPushButton(centralWidget);
         roolsButton->setObjectName("roolsButton");
-        roolsButton->setGeometry(QRect(130, 200, 241, 61));
+        roolsButton->setGeometry(QRect(130, 230, 241, 81));
+        roolsButton->setFont(font);
+        roolsButton->setStyleSheet(QString::fromUtf8("background-color:rgb(255,180,80);\n"
+"color:white;"));
         MainWindow->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(MainWindow);
-        menuBar->setObjectName("menuBar");
-        menuBar->setGeometry(QRect(0, 0, 500, 21));
-        MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName("mainToolBar");
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(MainWindow);
-        statusBar->setObjectName("statusBar");
-        MainWindow->setStatusBar(statusBar);
 
         retranslateUi(MainWindow);
 
