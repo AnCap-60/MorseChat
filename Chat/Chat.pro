@@ -25,12 +25,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+    ../Server/source/ServerAPI.cpp \
         main.cpp \
         mainwindow.cpp \
     chatwindow.cpp \
     creators.cpp
 
 HEADERS += \
+    ../Server/headers/ServerAPI.h \
         mainwindow.h \
     chatwindow.h \
     creators.h
