@@ -28,3 +28,8 @@ void MainWindow::on_creatorsButton_clicked()
 {
     creatorswidget.show();
 }
+
+void MainWindow::on_roolsButton_clicked()
+{
+    aboutwindow.show();
+}

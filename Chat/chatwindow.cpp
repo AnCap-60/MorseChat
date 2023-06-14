@@ -291,6 +291,12 @@ bool ChatWindow::validateMorze(QString message) //проверка на соот
     QString order="";
     bool flag = false;
 
+    if (message == "not an order")
+    {
+        flag = true;
+        return flag;
+    }
+
     if ((message.contains('.') == false) && (message.contains('-') == false)) //проверка на символы "." и "-", т.к. послед-ть Морзе без них не может быть задана
     {
         flag = true;
@@ -367,6 +373,11 @@ bool ChatWindow::validateRussian(QString message) //проверка на соо
 
 QString ChatWindow::leadToMorze(QString message) //метод для приведения последовательности Морзе в оптимальный для программы вид
 {
+    if(message == "")
+    {
+        message = "not an order";
+    }
+
     if (message[0] == ' ') //убрать один/несколько первых пробелов
     {
         int index = 0, count = 0;
@@ -386,6 +397,9 @@ QString ChatWindow::leadToMorze(QString message) //метод для приве�
 
         message.remove(count, index);
     }
+
+    while (message[message.size() - 1] == ' ') //убрать один/несколько последних пробелов
+        message.remove(message.size() - 1, 1);
 
     for (int i = 0; i < message.size(); i++) //убрать несколько пробелов в середине сообщения
     {
@@ -557,4 +571,15 @@ void ChatWindow::on_pushButton_clicked()
 {
     this->close();
     emit mainWindow();
+}
+
+void ChatWindow::on_copyButton_clicked()
+{
+    ui->resultTranslateTextEdit->selectAll();
+    ui->resultTranslateTextEdit->copy();
+}
+
+void ChatWindow::on_pasteButton_clicked()
+{
+    ui->lineEdit->paste();
 }

@@ -37,6 +37,10 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_copyButton_clicked();
+
+    void on_pasteButton_clicked();
+
 private:
     Ui::ChatWindow *ui;
     QString orderMorzeToRussian(QString now);

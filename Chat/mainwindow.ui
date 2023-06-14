@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Чат</string>
+   <string>MorseChat</string>
   </property>
   <property name="styleSheet">
    <string notr="true">background-color:rgb(170, 3, 250);</string>
