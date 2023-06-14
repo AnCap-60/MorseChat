@@ -28,17 +28,20 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     chatwindow.cpp \
-    creators.cpp
+    creators.cpp \
+    about.cpp
 
 HEADERS += \
         mainwindow.h \
     chatwindow.h \
-    creators.h
+    creators.h \
+    about.h
 
 FORMS += \
         mainwindow.ui \
     chatwindow.ui \
-    creators.ui
+    creators.ui \
+    about.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

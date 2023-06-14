@@ -15,6 +15,9 @@ public:
     explicit creators(QWidget *parent = nullptr);
     ~creators();
 
+private slots:
+    void on_pushButton_clicked();
+
 private:
     Ui::creators *ui;
 };

@@ -121,6 +121,27 @@
     <set>Qt::AlignCenter</set>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>590</y>
+     <width>101</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>13</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgb(255, 180, 80); color:white</string>
+   </property>
+   <property name="text">
+    <string>В меню</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

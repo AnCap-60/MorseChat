@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "chatwindow.h"
 #include "creators.h"
+#include "about.h"
 
 namespace Ui {
 class MainWindow;
@@ -22,10 +23,13 @@ private slots:
 
     void on_creatorsButton_clicked();
 
+    void on_roolsButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     ChatWindow *chatwindow;
     creators creatorswidget;
+    about aboutwindow;
 };
 
 #endif // MAINWINDOW_H

@@ -12,3 +12,8 @@ creators::~creators()
 {
     delete ui;
 }
+
+void creators::on_pushButton_clicked()
+{
+    this->close();
+}
