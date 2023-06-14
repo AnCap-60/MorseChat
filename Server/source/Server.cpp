@@ -20,8 +20,8 @@ void Server::incomingConnection(qintptr socketDescriptor)
 	sockets.push_back(socket);
 	qDebug() << "client " << socketDescriptor << " connected\n";
 
-	for (auto note : history)
-		SendToClient(socket, note.first, note.second);
+	//for (auto note : history)
+	//	SendToClient(socket, note.first, note.second);
 }
 
 void Server::ConnectionLost()
@@ -30,7 +30,7 @@ void Server::ConnectionLost()
 		if (!socket->isValid())
 		{
 			sockets.removeOne(soc);
-			qDebug() << "socket " << soc->socketDescriptor() << " deleted";
+			qDebug() << "socket deleted";
 		}
 }
 

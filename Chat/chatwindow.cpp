@@ -42,7 +42,7 @@ void ChatWindow::on_sendButton_clicked()
     {
         leadToMorze(message);
         //ui->textEdit->append(message);
-        ServerAPI::GetInstance()->SendToServer(ui->lineEdit->text());
+        ServerAPI::GetInstance()->SendToServer(message);
     }
     else
     {
@@ -378,59 +378,32 @@ QString ChatWindow::leadToMorze(QString message) //метод для приве�
         message = "not an order";
     }
 
-    if (message[0] == ' ') //убрать один/несколько первых пробелов
+    bool startFlag = true;
+    for (size_t i = 0; i < message.size(); i++) // в начале и середине
     {
-        int index = 0, count = 0;
-
-        for (int i = 1; message[i] == ' '; i++)
+        if (startFlag && message[i] == ' ')
         {
-            index = i;
+            message.removeAt(i);
+            i = -1;
+            continue;
         }
+        else
+            startFlag = false;
 
-        ++index;
-
-        for (int i = index; i < message.size(); i++)
+        if (i < message.size() - 1 && message[i] == ' ' && message[i + 1] == ' ')
         {
-            message [i - index] = message[i];
-            count++;
-        }
-
-        message.remove(count, index);
-    }
-
-    while (message[message.size() - 1] == ' ') //убрать один/несколько последних пробелов
-        message.remove(message.size() - 1, 1);
-
-    for (int i = 0; i < message.size(); i++) //убрать несколько пробелов в середине сообщения
-    {
-        if ((message[i] == ' ') && (message[i+1] == ' '))
-        {
-            int j = i;
-            while (message[j+1] == ' ')
-            {
-                message.remove(j+1, 1);
-            }
+            message.removeAt(i);
+            i = -1;
+            continue;
         }
     }
-
-    for (int i = 0; i < message.size(); i++) //убрать несколько слешей в середине сообщения
+    
+    for (size_t i = message.size() - 1; i >= 0; i--) // в конце
     {
-        if ((message[i] == '/') && (message[i+1] == '/'))
-        {
-            int j = i;
-            while (message[j+1] == '/')
-            {
-                message.remove(j+1, 1);
-            }
-        }
-    }
-
-    for (int i = 0; i < message.size(); i++) //убрать пробелы рядом со слешем
-    {
-        if ((message[i] == ' ') && ((message[i+1] == '/') || (message[i-1] == '/')))
-        {
-            message.remove(i, 1);
-        }
+        if (message[i] == ' ')
+            message.removeAt(i);
+        else
+            break;
     }
 
     return message;

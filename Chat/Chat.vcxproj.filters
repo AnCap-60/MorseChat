@@ -43,13 +43,16 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="mainwindow.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="creators.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\Server\source\ServerAPI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mainwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="about.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -57,13 +60,16 @@
     <QtMoc Include="chatwindow.h">
       <Filter>Header Files</Filter>
     </QtMoc>
-    <QtMoc Include="mainwindow.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="creators.h">
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="..\Server\headers\ServerAPI.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="mainwindow.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="about.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
@@ -83,6 +89,9 @@
       <Filter>Form Files</Filter>
     </QtUic>
     <QtUic Include="creators.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="about.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

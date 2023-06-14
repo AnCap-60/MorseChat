@@ -64,7 +64,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "\320\247\320\260\321\202", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MorseChat", nullptr));
         enterButton->setText(QCoreApplication::translate("MainWindow", "\320\222\320\276\320\271\321\202\320\270 \320\262 \321\207\320\260\321\202", nullptr));
         creatorsButton->setText(QCoreApplication::translate("MainWindow", "\320\241\320\276\320\267\320\264\320\260\321\202\320\265\320\273\320\270", nullptr));
         roolsButton->setText(QCoreApplication::translate("MainWindow", "\320\237\321\200\320\260\320\262\320\270\320\273\320\260 \320\260\320\267\320\261\321\203\320\272\320\270 \320\234\320\276\321\200\320\267\320\265", nullptr));

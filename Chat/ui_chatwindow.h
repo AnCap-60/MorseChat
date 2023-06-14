@@ -44,6 +44,8 @@ public:
     QLineEdit *enterTranslateTextEdit;
     QLineEdit *resultTranslateTextEdit;
     QPushButton *pushButton;
+    QPushButton *copyButton;
+    QPushButton *pasteButton;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -59,10 +61,10 @@ public:
         centralwidget->setObjectName("centralwidget");
         lineEdit = new QLineEdit(centralwidget);
         lineEdit->setObjectName("lineEdit");
-        lineEdit->setGeometry(QRect(20, 450, 361, 31));
+        lineEdit->setGeometry(QRect(20, 470, 361, 31));
         QFont font;
         font.setFamilies({QString::fromUtf8("Times New Roman")});
-        font.setPointSize(20);
+        font.setPointSize(18);
         lineEdit->setFont(font);
         lineEdit->setStyleSheet(QString::fromUtf8("background-color:rgb(220,220,220)\n"
 ""));
@@ -71,14 +73,14 @@ public:
         lineEdit->setReadOnly(true);
         sendButton = new QPushButton(centralwidget);
         sendButton->setObjectName("sendButton");
-        sendButton->setGeometry(QRect(390, 450, 91, 31));
+        sendButton->setGeometry(QRect(390, 470, 91, 31));
         QFont font1;
         font1.setPointSize(12);
         sendButton->setFont(font1);
         sendButton->setStyleSheet(QString::fromUtf8("background-color:rgb(255, 180, 80); color:white"));
         layoutWidget = new QWidget(centralwidget);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(20, 490, 361, 43));
+        layoutWidget->setGeometry(QRect(20, 510, 361, 43));
         horizontalLayout = new QHBoxLayout(layoutWidget);
         horizontalLayout->setObjectName("horizontalLayout");
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
@@ -117,13 +119,13 @@ public:
 
         deleteButton = new QPushButton(centralwidget);
         deleteButton->setObjectName("deleteButton");
-        deleteButton->setGeometry(QRect(390, 490, 91, 39));
+        deleteButton->setGeometry(QRect(390, 510, 91, 41));
         deleteButton->setMaximumSize(QSize(16777215, 50));
         deleteButton->setFont(font1);
         deleteButton->setStyleSheet(QString::fromUtf8("background-color:rgb(255, 180, 80); color:white"));
         textEdit = new QTextEdit(centralwidget);
         textEdit->setObjectName("textEdit");
-        textEdit->setGeometry(QRect(20, 20, 461, 421));
+        textEdit->setGeometry(QRect(20, 10, 461, 421));
         textEdit->setFont(font);
         textEdit->setStyleSheet(QString::fromUtf8("selection-background-color: rgb(220,220,220); selection-color: black; background-color:rgb(220,220,220)\n"
 ""));
@@ -141,7 +143,13 @@ public:
         enterComboBox->setObjectName("enterComboBox");
         enterComboBox->setGeometry(QRect(500, 209, 151, 31));
         enterComboBox->setFont(font1);
-        enterComboBox->setStyleSheet(QString::fromUtf8("background-color:rgb(220,220,220); selection-background-color:rgb(220,220,220)"));
+        enterComboBox->setStyleSheet(QString::fromUtf8("background-color:rgb(220,220,220); selection-background-color:rgb(220,220,220);\n"
+"QComboBox::drop-down\n"
+"{\n"
+"	background-color:rgb(250,180,3);\n"
+"	selected-background-color:rgb(250,180,3);\n"
+"}\n"
+""));
         flipButton = new QPushButton(centralwidget);
         flipButton->setObjectName("flipButton");
         flipButton->setGeometry(QRect(660, 220, 41, 21));
@@ -167,16 +175,29 @@ public:
         resultTranslateTextEdit->setObjectName("resultTranslateTextEdit");
         resultTranslateTextEdit->setGeometry(QRect(690, 280, 171, 31));
         resultTranslateTextEdit->setFont(font4);
-        resultTranslateTextEdit->setStyleSheet(QString::fromUtf8("background-color:rgb(220,220,220)\n"
+        resultTranslateTextEdit->setStyleSheet(QString::fromUtf8("background-color:rgb(220,220,220); selection-background-color: rgb(220,220,220); selection-color: black;\n"
 ""));
         resultTranslateTextEdit->setReadOnly(true);
         pushButton = new QPushButton(centralwidget);
         pushButton->setObjectName("pushButton");
-        pushButton->setGeometry(QRect(760, 500, 101, 31));
+        pushButton->setGeometry(QRect(760, 520, 101, 31));
         QFont font5;
         font5.setPointSize(13);
         pushButton->setFont(font5);
         pushButton->setStyleSheet(QString::fromUtf8("background-color:rgb(255, 180, 80); color:white"));
+        copyButton = new QPushButton(centralwidget);
+        copyButton->setObjectName("copyButton");
+        copyButton->setGeometry(QRect(780, 330, 81, 31));
+        QFont font6;
+        font6.setFamilies({QString::fromUtf8("Times New Roman")});
+        font6.setPointSize(10);
+        copyButton->setFont(font6);
+        copyButton->setStyleSheet(QString::fromUtf8("background-color:rgb(255, 180, 80); color:white"));
+        pasteButton = new QPushButton(centralwidget);
+        pasteButton->setObjectName("pasteButton");
+        pasteButton->setGeometry(QRect(20, 440, 131, 21));
+        pasteButton->setFont(font6);
+        pasteButton->setStyleSheet(QString::fromUtf8("background-color:rgb(255, 180, 80); color:white"));
         ChatWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(ChatWindow);
         menubar->setObjectName("menubar");
@@ -193,7 +214,7 @@ public:
 
     void retranslateUi(QMainWindow *ChatWindow)
     {
-        ChatWindow->setWindowTitle(QCoreApplication::translate("ChatWindow", "\320\247\320\260\321\202", nullptr));
+        ChatWindow->setWindowTitle(QCoreApplication::translate("ChatWindow", "MorseChat", nullptr));
         lineEdit->setInputMask(QString());
         lineEdit->setText(QString());
         lineEdit->setPlaceholderText(QCoreApplication::translate("ChatWindow", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265 \321\201\320\276\320\276\320\261\321\211\320\265\320\275\320\270\320\265...", nullptr));
@@ -206,7 +227,7 @@ public:
         textEdit->setHtml(QCoreApplication::translate("ChatWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'Times New Roman'; font-size:20pt; font-weight:400; font-style:normal;\">\n"
+"</style></head><body style=\" font-family:'Times New Roman'; font-size:18pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-family:'Eras Medium ITC'; font-size:16pt;\"><br /></p></body></html>", nullptr));
         translateButton->setText(QCoreApplication::translate("ChatWindow", "\320\237\320\265\321\200\320\265\320\262\320\265\321\201\321\202\320\270", nullptr));
         enterComboBox->setItemText(0, QCoreApplication::translate("ChatWindow", "\320\234\320\276\321\200\320\267\320\265", nullptr));
@@ -218,6 +239,8 @@ public:
 
         enterTranslateTextEdit->setPlaceholderText(QCoreApplication::translate("ChatWindow", "\320\222\320\262\320\265\320\264\320\270\321\202\320\265...", nullptr));
         pushButton->setText(QCoreApplication::translate("ChatWindow", "\320\222 \320\274\320\265\320\275\321\216", nullptr));
+        copyButton->setText(QCoreApplication::translate("ChatWindow", "\320\232\320\276\320\277\320\270\321\200\320\276\320\262\320\260\321\202\321\214", nullptr));
+        pasteButton->setText(QCoreApplication::translate("ChatWindow", "\320\222\321\201\321\202\320\260\320\262\320\270\321\202\321\214 \320\270\320\267 \320\261\321\203\321\204\320\265\321\200\320\260", nullptr));
     } // retranslateUi
 
 };

@@ -193,6 +193,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Server\source\ServerAPI.cpp" />
+    <ClCompile Include="about.cpp" />
     <ClCompile Include="chatwindow.cpp" />
     <ClCompile Include="creators.cpp" />
     <ClCompile Include="main.cpp" />
@@ -200,8 +201,6 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="chatwindow.h">
-    </QtMoc>
-    <QtMoc Include="mainwindow.h">
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
@@ -223,6 +222,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="about.ui" />
     <QtUic Include="chatwindow.ui">
     </QtUic>
     <QtUic Include="creators.ui" />
@@ -239,6 +239,12 @@
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\Server\headers\ServerAPI.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="mainwindow.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="about.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

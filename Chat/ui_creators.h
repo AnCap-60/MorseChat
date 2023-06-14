@@ -12,6 +12,7 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QLabel>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -23,6 +24,7 @@ public:
     QLabel *label_2;
     QLabel *label_3;
     QLabel *label_4;
+    QPushButton *pushButton;
 
     void setupUi(QWidget *creators)
     {
@@ -59,6 +61,13 @@ public:
         label_4->setFont(font);
         label_4->setStyleSheet(QString::fromUtf8("color:rgb(255,255,255)"));
         label_4->setAlignment(Qt::AlignCenter);
+        pushButton = new QPushButton(creators);
+        pushButton->setObjectName("pushButton");
+        pushButton->setGeometry(QRect(390, 590, 101, 31));
+        QFont font2;
+        font2.setPointSize(13);
+        pushButton->setFont(font2);
+        pushButton->setStyleSheet(QString::fromUtf8("background-color:rgb(255, 180, 80); color:white"));
 
         retranslateUi(creators);
 
@@ -72,6 +81,7 @@ public:
         label_2->setText(QCoreApplication::translate("creators", "\320\232\320\270\321\200\320\270\320\273\320\273\320\276\320\262 \320\237\320\260\320\262\320\265\320\273", nullptr));
         label_3->setText(QCoreApplication::translate("creators", "\320\245\320\276\321\205\320\273\320\276\320\262 \320\234\320\260\320\272\321\201\320\270\320\274", nullptr));
         label_4->setText(QCoreApplication::translate("creators", "\320\236716\320\221", nullptr));
+        pushButton->setText(QCoreApplication::translate("creators", "\320\222 \320\274\320\265\320\275\321\216", nullptr));
     } // retranslateUi
 
 };
