@@ -27,15 +27,18 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    chatwindow.cpp
+    chatwindow.cpp \
+    creators.cpp
 
 HEADERS += \
         mainwindow.h \
-    chatwindow.h
+    chatwindow.h \
+    creators.h
 
 FORMS += \
         mainwindow.ui \
-    chatwindow.ui
+    chatwindow.ui \
+    creators.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

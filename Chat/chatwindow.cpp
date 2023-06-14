@@ -39,7 +39,7 @@ void ChatWindow::on_sendButton_clicked()
     if (flag == false)
     {
         leadToMorze(message);
-        ui->textBrowser->append(message);
+        ui->textEdit->append(message);
     }
     else
     {
@@ -54,7 +54,7 @@ void ChatWindow::newMessage(QTime Time, QString message)
     QString time = Time.toString();
     time += ' ' + message;
 
-    ui->textBrowser->append(time);
+    ui->textEdit->append(time);
 }
 
 void ChatWindow::addingSymbols() //обработчик нажатия на кнопки "-", ".", "/"
@@ -281,62 +281,6 @@ QString ChatWindow::translateMessageToMorze(QString originalMessage) //пере�
     return message;
 }
 
-void ChatWindow::on_translateToMorzeButton_clicked() //обработчик нажатия на кнопку перевода
-{
-    if (ui->lineEdit->text() != "")
-    {
-        if (validateRussian(ui->lineEdit->text()) == false)
-        {
-            ui->translateToRussianButton->show();
-            ui->translateToMorzeButton->hide();
-
-            QString res = translateMessageToMorze(ui->lineEdit->text());
-            ui->lineEdit->setText(res);
-        }
-        else
-        {
-            QMessageBox::about(this, "Ошибка!", "Введен текст не на русском языке");
-            ui->lineEdit->clear();
-        }
-    }
-    else
-    {
-        ui->translateToRussianButton->show();
-        ui->translateToMorzeButton->hide();
-    }
-}
-
-void ChatWindow::on_translateToRussianButton_clicked() //обработчик нажатия на кнопку перевода
-{
-    if (ui->lineEdit->text() != "")
-    {
-        if (validateMorze(ui->lineEdit->text()) == false)
-        {
-            ui->translateToMorzeButton->show();
-            ui->translateToRussianButton->hide();
-
-            QString res = translateMessageToRussian(ui->lineEdit->text());
-            ui->lineEdit->setText(res);
-        }
-        else
-        {
-            QMessageBox::about(this, "Ошибка!", "Введена не последовательность Морзе");
-            ui->lineEdit->clear();
-        }
-    }
-    else
-    {
-        ui->translateToMorzeButton->show();
-        ui->translateToRussianButton->hide();
-    }
-
-}
-
-void ChatWindow::on_clearButton_clicked() //очищение строки ввода сообщения
-{
-    ui->lineEdit->clear();
-}
-
 bool ChatWindow::validateMorze(QString message) //проверка на соответствие сообщения правилам для этой программы
 {
     QString order="";
@@ -392,6 +336,12 @@ bool ChatWindow::validateRussian(QString message) //проверка на соо
 {
     bool flag = false;
 
+    if (message == "not a string")
+    {
+        flag = true;
+        return flag;
+    }
+
     for (int i = 0; i < message.size(); i++)
     {
         if ((message[i] != "А") && (message[i] != "Б") && (message[i] != "В") && (message[i] != "Г") && (message[i] != "Д") && (message[i] != "Е")
@@ -405,7 +355,6 @@ bool ChatWindow::validateRussian(QString message) //проверка на соо
             break;
         }
     }
-
     return flag;
 }
 
@@ -468,12 +417,137 @@ QString ChatWindow::leadToMorze(QString message) //метод для приве�
 
 QString ChatWindow::leadToRussian(QString message) //метод для приведения последовательности на русском в оптимальный для программы вид
 {
+    if (message == "")
+        return "not a string";
 
+    if (message[0] == ' ') //убрать один/несколько первых пробелов
+    {
+        int index = 0, count = 0;
+
+        for (int i = 1; message[i] == ' '; i++)
+        {
+            index = i;
+        }
+
+        ++index;
+
+        for (int i = index; i < message.size(); i++)
+        {
+            message [i - index] = message[i];
+            count++;
+        }
+
+        message.remove(count, index);
+    }
+
+    for (int i = 0; i < message.size(); i++) //убрать несколько пробелов в середине сообщения
+    {
+        if ((message[i] == ' ') && (message[i+1] == ' '))
+        {
+            int j = i;
+            while (message[j+1] == ' ')
+            {
+                message.remove(j+1, 1);
+            }
+        }
+    }
+
+    if (message[message.size() - 1] == ' ')
+    {
+        message.remove(message.size() - 1, 1);
+    }
 
     return message;
 }
 
-void ChatWindow::on_testButton_clicked()
+void ChatWindow::on_textEdit_cursorPositionChanged()
 {
+    QTextCursor cursor = ui->textEdit->textCursor();
+    cursor.select(QTextCursor::LineUnderCursor);
+    ui->textEdit->copy();
+    ui->textEdit->setTextCursor(cursor);
+}
 
+void ChatWindow::on_translateButton_clicked()
+{
+    QString selected1, selected2, result;
+
+    selected1 = ui->enterComboBox->currentText();
+    selected2 = ui->resultComboBox->currentText();
+
+    QString message = ui->enterTranslateTextEdit->text();
+
+    if ((selected1 != selected2) && (message != ""))
+    {
+        if ((selected1 == "Морзе") && (selected2 == "Русский"))
+        {
+            message = leadToMorze(message);
+
+            if (validateMorze(message) == false)
+            {
+                result = translateMessageToRussian(message);
+                ui->resultTranslateTextEdit->setText(result);
+            }
+            else
+            {
+                QMessageBox::about(this,"Ошибка!","Введена не последовательность Морзе");
+                ui->enterTranslateTextEdit->clear();
+                ui->resultTranslateTextEdit->clear();
+            }
+        }
+        if ((selected1 == "Русский") && (selected2 == "Морзе"))
+        {
+            QString message = ui->enterTranslateTextEdit->text();
+            message = leadToRussian(message);
+
+            if (validateRussian(message) == false)
+            {
+                result = translateMessageToMorze(message);
+                ui->resultTranslateTextEdit->setText(result);
+            }
+            else
+            {
+                QMessageBox::about(this,"Ошибка!","Введенный текст не на русском языке");
+                ui->enterTranslateTextEdit->clear();
+                ui->resultTranslateTextEdit->clear();
+            }
+        }
+    }
+    else
+    {
+        if (selected1 == selected2)
+        {
+            QMessageBox::about(this,"Ошибка!","Выбраны одинаковые языки!");
+        }
+        else
+            QMessageBox::about(this,"Ошибка!","Ничего не введено!");
+    }
+}
+
+void ChatWindow::on_flipButton_clicked()
+{
+    QString enter, result;
+
+    enter = ui->enterComboBox->currentText();
+    result = ui->resultComboBox->currentText();
+
+    ui->enterComboBox->setCurrentText(result);
+    ui->resultComboBox->setCurrentText(enter);
+
+    enter = ui->enterTranslateTextEdit->text();
+    result = ui->resultTranslateTextEdit->text();
+
+    ui->enterTranslateTextEdit->setText(result);
+    ui->resultTranslateTextEdit->setText(enter);
+}
+
+void ChatWindow::on_enterTranslateTextEdit_textEdited()
+{
+    ui->resultTranslateTextEdit->clear();
+}
+
+void ChatWindow::on_pushButton_clicked()
+{
+    this->close();
+    emit mainWindow();
 }

@@ -22,14 +22,16 @@ private slots:
     void addingSymbols();
     void deleteSymbols();
     void addingSpacer();
-
-    void on_translateToMorzeButton_clicked();
-    void on_clearButton_clicked();
-    void on_translateToRussianButton_clicked();
-    void on_testButton_clicked();
-    void on_sendButton_clicked();
-
     void newMessage(QTime time, QString message);
+
+    void on_sendButton_clicked();
+    void on_translateButton_clicked();
+    void on_flipButton_clicked();
+
+    void on_textEdit_cursorPositionChanged();
+    void on_enterTranslateTextEdit_textEdited();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::ChatWindow *ui;
@@ -46,6 +48,9 @@ private:
 
 protected:
     void keyPressEvent(QKeyEvent *e) override;
+
+signals:
+    void mainWindow();
 };
 
 #endif // CHATWINDOW_H
