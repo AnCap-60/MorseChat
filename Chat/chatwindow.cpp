@@ -274,19 +274,19 @@ void ChatWindow::on_translateToMorzeButton_clicked() //обработчик на
 {
     if (ui->lineEdit->text() != "")
     {
-        if (validateRussian(ui->lineEdit->text()) == false)
+        /*if (validateRussian(ui->lineEdit->text()) == false)
         {
             ui->translateToRussianButton->show();
             ui->translateToMorzeButton->hide();
 
             QString res = translateMessageToMorze(ui->lineEdit->text());
             ui->lineEdit->setText(res);
-        }
-        else
+        }*/
+        /*else
         {
             QMessageBox::about(this, "Ошибка!", "Введен текст не на русском языке");
             ui->lineEdit->clear();
-        }
+        }*/
     }
     else
     {
@@ -377,26 +377,26 @@ bool ChatWindow::validateMorze(QString message) //проверка на соот
     return flag;
 }
 
-bool ChatWindow::validateRussian(QString message) //проверка на соответствие сообщения правилам для этой программы
-{
-    bool flag = false;
-
-    for (int i = 0; i < message.size(); i++)
-    {
-        if ((message[i] != "А") && (message[i] != "Б") && (message[i] != "В") && (message[i] != "Г") && (message[i] != "Д") && (message[i] != "Е")
-                && (message[i] != "Ж") && (message[i] != "З") && (message[i] != "И") && (message[i] != "Й") && (message[i] != "К") && (message[i] != "Л")
-                && (message[i] != "М") && (message[i] != "Н") && (message[i] != "О") && (message[i] != "П") && (message[i] != "Р") && (message[i] != "С")
-                && (message[i] != "Т") && (message[i] != "У") && (message[i] != "Ф") && (message[i] != "Х") && (message[i] != "Ц") && (message[i] != "Ч")
-                && (message[i] != "Ш") && (message[i] != "Щ") && (message[i] != "Ъ") && (message[i] != "Ы") && (message[i] != "Ь") && (message[i] != "Э")
-                && (message[i] != "Ю") && (message[i] != "Я") && (message[i] != ' '))
-        {
-            flag = true;
-            break;
-        }
-    }
-
-    return flag;
-}
+//bool ChatWindow::validateRussian(QString message) //проверка на соответствие сообщения правилам для этой программы
+//{
+//    bool flag = false;
+//
+//    for (int i = 0; i < message.size(); i++)
+//    {
+//        if ((message[i] != "А") && (message[i] != "Б") && (message[i] != "В") && (message[i] != "Г") && (message[i] != "Д") && (message[i] != "Е")
+//                && (message[i] != "Ж") && (message[i] != "З") && (message[i] != "И") && (message[i] != "Й") && (message[i] != "К") && (message[i] != "Л")
+//                && (message[i] != "М") && (message[i] != "Н") && (message[i] != "О") && (message[i] != "П") && (message[i] != "Р") && (message[i] != "С")
+//                && (message[i] != "Т") && (message[i] != "У") && (message[i] != "Ф") && (message[i] != "Х") && (message[i] != "Ц") && (message[i] != "Ч")
+//                && (message[i] != "Ш") && (message[i] != "Щ") && (message[i] != "Ъ") && (message[i] != "Ы") && (message[i] != "Ь") && (message[i] != "Э")
+//                && (message[i] != "Ю") && (message[i] != "Я") && (message[i] != ' '))
+//        {
+//            flag = true;
+//            break;
+//        }
+//    }
+//
+//    return flag;
+//}
 
 QString ChatWindow::leadToMorze(QString message) //метод для приведения последовательности Морзе в оптимальный для программы вид
 {

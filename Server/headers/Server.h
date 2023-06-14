@@ -18,7 +18,7 @@ private:
 
 	quint16 nextBlockSize = 0;
 
-	void SendToClient(QString str);
+	void SendToClient(QTime time, QString message);
 
 public slots:
 	void SlotReadyRead();

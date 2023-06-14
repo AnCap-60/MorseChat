@@ -48,7 +48,7 @@ void Server::SlotReadyRead()
 
 			nextBlockSize = 0;
 
-			SendToClient(message);
+			SendToClient(time, message);
 
 			break;
 		}
@@ -57,12 +57,16 @@ void Server::SlotReadyRead()
 		qDebug() << "QDataStream error";
 }
 
-void Server::SendToClient(QString str)
+void Server::SendToClient(QTime time, QString message)
 {
 	data.clear();
 	QDataStream out(&data, QIODevice::WriteOnly);
 	out.setVersion(QDataStream::Qt_6_5);
 
-	out << str;
-	socket->write(data);
+	out << quint16(0) << time << message;
+	out.device()->seek(0);
+	out << quint16(data.size() - sizeof(quint16));
+
+	for (QTcpSocket* soc : sockets)
+		soc->write(data);
 }

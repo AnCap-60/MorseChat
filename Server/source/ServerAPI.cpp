@@ -58,10 +58,15 @@ void ServerAPI::SlotReadyRead()
 
 			Instance->nextBlockSize = 0;
 
-			//TODO: show message and time on chat screen
+			emit NewMessage(time, message);
+
 			break;
 		}
 	}
-	else;
-		//TODO: show error
+	else
+	{
+		emit NewMessage(QTime::currentTime(), "error");
+	}
 }
+
+ServerAPI* ServerAPI::instance;

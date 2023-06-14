@@ -16,16 +16,18 @@ public:
 private:
 	ServerAPI() {}
 
+	static ServerAPI* instance;
 	static ServerAPI* GetInstance();
 
 #define Instance GetInstance()
 
-	static ServerAPI* instance;
-
-	QTcpSocket* socket;
+	QTcpSocket* socket = nullptr;
 	QByteArray data;
 	quint16 nextBlockSize = 0;
 
 public slots:
 	static void SlotReadyRead();
+
+signals:
+	static void NewMessage(QTime time, QString message);
 };
