@@ -4,6 +4,7 @@
 #include <QDebug>
 #include <map>
 #include <iostream>
+#include <QTime>
 
 ChatWindow::ChatWindow(QWidget *parent) : //конструктор окна
     QMainWindow(parent),
@@ -18,6 +19,8 @@ ChatWindow::ChatWindow(QWidget *parent) : //конструктор окна
     connect (ui->spaceButton, SIGNAL(clicked()), this, SLOT(addingSpacer()));
 
     connect (ui->deleteButton, SIGNAL(clicked()), this, SLOT(deleteSymbols()));
+
+    connect (ui->deleteButton, SIGNAL(clicked), this, SLOT(newMessage()));
 }
 
 ChatWindow::~ChatWindow() //деструктор окна
@@ -44,6 +47,14 @@ void ChatWindow::on_sendButton_clicked()
     }
 
     ui->lineEdit->clear();
+}
+
+void ChatWindow::newMessage(QTime Time, QString message)
+{
+    QString time = Time.toString();
+    time += ' ' + message;
+
+    ui->textBrowser->append(time);
 }
 
 void ChatWindow::addingSymbols() //обработчик нажатия на кнопки "-", ".", "/"
