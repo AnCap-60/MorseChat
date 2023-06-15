@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QKeyEvent>
+#include <QClipboard>
 #include <map>
 #include <QTime>
 #include <cstring>

@@ -456,9 +456,16 @@ QString ChatWindow::leadToRussian(QString message) //метод для прив�
 
 void ChatWindow::on_textEdit_cursorPositionChanged()
 {
+    QClipboard* buf = QApplication::clipboard();
+
     QTextCursor cursor = ui->textEdit->textCursor();
     cursor.select(QTextCursor::LineUnderCursor);
     ui->textEdit->copy();
+
+    QString str = buf->text();
+    str.remove(0, 9);
+    buf->setText(str);
+
     ui->textEdit->setTextCursor(cursor);
 }
 
